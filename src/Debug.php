@@ -8,12 +8,18 @@ class Debug {
 
     /**
      * @param $label string
-     * @param $var array
+     * @param $var mixed
      * @return void
      */
-    public static function evaluate($label, $var = []) {
+    public function evaluate($label, $var = null)
+    {
         $output = '#########################################' . PHP_EOL;
-        $output = $output . $label . " : " . json_encode($var, JSON_PRETTY_PRINT) . PHP_EOL;
+        $output = $output . $label;
+        if ($var)
+        {
+            $output = $output . " : " . json_encode($var, JSON_PRETTY_PRINT);
+        }
+        $output = $output . PHP_EOL;
         $output = $output . '#########################################' . PHP_EOL;
         file_put_contents(self::$FILE_PATH, $output, FILE_APPEND);
     }
