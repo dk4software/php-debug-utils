@@ -1,0 +1,21 @@
+{
+    "name": "dk4software/php-debug-utils",
+    "description": "A utility to debug php code.",
+    "require": {
+        "php": ">=5.6.0",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dk4software\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dk4software",
+            "email": "dk4software@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "license": "MIT"
+}
