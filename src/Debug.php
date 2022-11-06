@@ -6,7 +6,12 @@ class Debug {
 
     private static $FILE_PATH = '/var/www/html/var/log/mydebug.log';
 
-    public static function evaluate($label, $var = '') {
+    /**
+     * @param $label string
+     * @param $var array
+     * @return void
+     */
+    public static function evaluate($label, $var = []) {
         $output = '#########################################' . PHP_EOL;
         $output = $output . $label . " : " . json_encode($var, JSON_PRETTY_PRINT) . PHP_EOL;
         $output = $output . '#########################################' . PHP_EOL;
