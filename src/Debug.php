@@ -11,7 +11,7 @@ class Debug {
      * @param $var mixed
      * @return void
      */
-    public function evaluate($label, $var = null)
+    public static function evaluate($label, $var = null)
     {
         $output = '#########################################' . PHP_EOL;
         $output = $output . $label;
