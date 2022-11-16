@@ -4,14 +4,24 @@ namespace Dk4software;
 
 class Debug {
 
-    private static $FILE_PATH = '/var/www/html/var/log/mydebug.log';
+    private $logPath;
+
+    private function __construct($logPath)
+    {
+        $this->logPath = $logPath;
+    }
+
+    public static function instance($path = '/var/www/html/var/log/mydebug.log')
+    {
+        return new Debug($path);
+    }
 
     /**
      * @param $label string
      * @param $var mixed
      * @return void
      */
-    public static function evaluate($label, $var = null)
+    public function evaluate($label, $var = null)
     {
         $output = '#########################################' . PHP_EOL;
         $output = $output . $label;
@@ -21,12 +31,14 @@ class Debug {
         }
         $output = $output . PHP_EOL;
         $output = $output . '#########################################' . PHP_EOL;
-        file_put_contents(self::$FILE_PATH, $output, FILE_APPEND);
+        file_put_contents($this->logPath, $output, FILE_APPEND);
     }
 
-    public static function trace()
+    public function trace()
     {
         $e = new \Exception();
-        self::evaluate('Stack Trace', $e->getTraceAsString());
+        $this->evaluate('Stack Trace', $e->getTraceAsString());
     }
 }
+
+//Debug::instance('./debug.log')->trace();
