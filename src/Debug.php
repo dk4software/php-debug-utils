@@ -23,4 +23,10 @@ class Debug {
         $output = $output . '#########################################' . PHP_EOL;
         file_put_contents(self::$FILE_PATH, $output, FILE_APPEND);
     }
+
+    public static function trace()
+    {
+        $e = new \Exception();
+        self::evaluate('Stack Trace', $e->getTraceAsString());
+    }
 }
